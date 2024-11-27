@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import GeneralInfoForm from "./form/general-info-form";
+import PersonalInfoForm from "./form/personal-info-form";
 
 export default function ResumeEditor() {
   return (
@@ -16,8 +17,9 @@ export default function ResumeEditor() {
       </header>
       <main className="relative grow">
         <div className="absolute bottom-0 top-0 flex w-full">
-          <div className="w-full p-3 md:w-1/2">
+          <div className="w-full overflow-y-auto p-3 md:w-1/2">
             <GeneralInfoForm />
+            <PersonalInfoForm />
           </div>
           <div className="grow md:border-r" />
           <div className="hidden w-1/2 md:flex">right</div>
