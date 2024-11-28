@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { EditorFormProps } from "@/lib/types";
-import { EducationValues, generalInfoSchema } from "@/lib/validation";
+import { educationSchema, EducationValues } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { GripHorizontal } from "lucide-react";
 import React, { useEffect } from "react";
@@ -20,7 +20,7 @@ export const EducationForm = ({
   setResumeData,
 }: EditorFormProps) => {
   const form = useForm<EducationValues>({
-    resolver: zodResolver(generalInfoSchema),
+    resolver: zodResolver(educationSchema),
     defaultValues: {
       educations: resumeData.educations || [],
     },
