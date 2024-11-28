@@ -1,7 +1,8 @@
 import useDimensions from "@/hooks/useDimensions";
 import { cn } from "@/lib/utils";
 import { ResumeValues } from "@/lib/validation";
-import React, { useRef } from "react";
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ResumePreviewProps {
   resumeData: ResumeValues;
@@ -17,6 +18,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({
   return (
     <div
       className={cn(
+        // [210/297] is a sheet of A4 paper aspect ratio in mm
         "aspect-[210/297] h-fit w-full bg-white text-black",
         className,
       )}
@@ -25,14 +27,60 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({
       <div
         className={cn("space-y-6 p-6", !width && "invisible")}
         style={{
+          // 794 is the width of A4 paper in pixels
           zoom: (1 / 794) * width,
         }}
         id="resumePreviewContent"
       >
-        <h1 className="p-6 text-3xl font-bold">
-          This text should change with the size of the container div
-        </h1>
+        <PersonalInfoHeader resumeData={resumeData} />
       </div>
     </div>
   );
 };
+
+interface ResumeSectionProps {
+  resumeData: ResumeValues;
+}
+
+function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
+  const { photo, firstName, lastName, jobTitle, city, country, phone, email } =
+    resumeData;
+
+  const [photoSrc, setPhotoSrc] = useState(photo instanceof File ? "" : photo);
+
+  useEffect(() => {
+    const objectUrl = photo instanceof File ? URL.createObjectURL(photo) : "";
+    if (objectUrl) setPhotoSrc(objectUrl);
+    if (photo === null) setPhotoSrc("");
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [photo]);
+
+  return (
+    <div className="flex items-center gap-6">
+      {photoSrc && (
+        <Image
+          src={photoSrc}
+          alt="Author photo"
+          width={100}
+          height={100}
+          className="aspect-square object-cover"
+        />
+      )}
+      <div className="space-y-2.5">
+        <div className="space-y-1">
+          <p className="text-3xl font-bold">
+            {firstName} {lastName}
+          </p>
+          <p className="font-medium">{jobTitle}</p>
+          <p className="text-xs text-gray-500">
+            {city}
+            {city && country ? ", " : ""}
+            {country}
+            {(city || country) && (phone || email) ? " • " : ""}
+            {[phone, email].filter(Boolean).join(" • ")}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
