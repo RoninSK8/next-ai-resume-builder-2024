@@ -5,18 +5,23 @@ import { ResumeValues } from "@/lib/validation";
 import { ResumePreview } from "@/components/resume-preview";
 import { ColorPicker } from "./color-picker";
 import { BorderStyleButton } from "./border-style-button";
+import { cn } from "@/lib/utils";
 
 interface ResumePreviewSectionProps {
   resumeData: ResumeValues;
   setResumeData: (resumeData: ResumeValues) => void;
+  className?: string;
 }
 
 export const ResumePreviewSection: React.FC<ResumePreviewSectionProps> = ({
   resumeData,
   setResumeData,
+  className,
 }) => {
   return (
-    <div className="group relative hidden w-1/2 md:flex">
+    <div
+      className={cn("group relative hidden w-full md:flex md:w-1/2", className)}
+    >
       {/* TODO: fix color picker that hides profile photo */}
       <div className="absolute left-1 top-1 flex flex-none flex-col gap-3 opacity-50 transition-opacity group-hover:opacity-100 lg:left-3 lg:top-3 xl:opacity-100">
         <ColorPicker
