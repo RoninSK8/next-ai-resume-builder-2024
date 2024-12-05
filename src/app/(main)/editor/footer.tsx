@@ -3,8 +3,10 @@ import Link from "next/link";
 import React from "react";
 import { steps } from "./steps";
 import { FileUserIcon, PenLineIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface FooterProps {
+  isSaving: boolean;
   currentStep: string;
   setCurrentStep: (step: string) => void;
   showSmResumePreview: boolean;
@@ -12,6 +14,7 @@ interface FooterProps {
 }
 
 export const Footer = ({
+  isSaving,
   currentStep,
   setCurrentStep,
   showSmResumePreview,
@@ -59,7 +62,14 @@ export const Footer = ({
           <Button variant="secondary" asChild>
             <Link href="/resumes">Close</Link>
           </Button>
-          <p className="text-muted-foreground opacity-0">Saving...</p>
+          <p
+            className={cn(
+              "text-muted-foreground opacity-0",
+              isSaving && "opacity-100",
+            )}
+          >
+            Saving...
+          </p>
         </div>
       </div>
     </footer>
