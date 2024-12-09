@@ -6,12 +6,19 @@ import Breadcrumbs from "./breadcrumbs";
 import { Footer } from "./footer";
 import { ResumeValues } from "@/lib/validation";
 import { ResumePreviewSection } from "./resume-preview-section";
-import { cn } from "@/lib/utils";
+import { cn, mapToResumeValues } from "@/lib/utils";
 import useAutoSaveResume from "./useAutoSaveResume";
 import useUnloadWarning from "@/hooks/useUnloadWarning";
+import { ResumeServerData } from "@/lib/types";
 
-export default function ResumeEditor() {
-  const [resumeData, setResumeData] = React.useState<ResumeValues>({});
+interface ResumeEditorProps {
+  resumeToEdit: ResumeServerData | null;
+}
+
+export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
+  const [resumeData, setResumeData] = React.useState<ResumeValues>(
+    resumeToEdit ? mapToResumeValues(resumeToEdit) : {},
+  );
   const searParams = useSearchParams();
   const [showSmResumePreview, setShowSmResumePreview] = React.useState(false);
   const { isSaving, hasUnsavedChanges } = useAutoSaveResume(resumeData);
