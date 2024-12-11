@@ -35,6 +35,8 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
+import { GenerateWorkExperienceButton } from "./generate-work-experience-button";
+import { Jacquarda_Bastarda_9_Charted } from "next/font/google";
 
 export const WorkExperienceForm = ({
   resumeData,
@@ -174,6 +176,13 @@ function WorkExperienceItem({
           className="size-5 cursor-grab text-muted-foreground focus:outline-none"
           {...attributes}
           {...listeners}
+        />
+      </div>
+      <div className="flex justify-center">
+        <GenerateWorkExperienceButton
+          onWorkExperienceGenerated={(exp) => {
+            form.setValue(`workExperiences.${index}`, exp);
+          }}
         />
       </div>
       <FormField
