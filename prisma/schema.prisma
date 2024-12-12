@@ -29,8 +29,8 @@ model Resume {
   jobTitle    String?
   city        String?
   country     String?
-  email       String?
   phone       String?
+  email       String?
 
   workExperiences WorkExperience[]
   educations      Education[]
@@ -52,7 +52,7 @@ model WorkExperience {
   description String?
 
   resumeId String
-  resume   Resume @relation(fields: [resumeId], references: [id])
+  resume   Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -69,7 +69,7 @@ model Education {
   endDate   DateTime?
 
   resumeId String
-  resume   Resume @relation(fields: [resumeId], references: [id])
+  resume   Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
