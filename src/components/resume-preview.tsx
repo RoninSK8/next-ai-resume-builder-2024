@@ -8,6 +8,7 @@ import { Badge } from "./ui/badge";
 import { BorderStyles } from "@/app/(main)/editor/border-style-button";
 
 interface ResumePreviewProps {
+  contentRef?: React.Ref<HTMLDivElement>;
   resumeData: ResumeValues;
   className?: string;
 }
@@ -15,6 +16,7 @@ interface ResumePreviewProps {
 export const ResumePreview: React.FC<ResumePreviewProps> = ({
   resumeData,
   className,
+  contentRef,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width } = useDimensions(containerRef);
@@ -28,6 +30,7 @@ export const ResumePreview: React.FC<ResumePreviewProps> = ({
       ref={containerRef}
     >
       <div
+        ref={contentRef}
         className={cn("space-y-6 p-6", !width && "invisible")}
         style={{
           // 794 is the width of A4 paper in pixels
