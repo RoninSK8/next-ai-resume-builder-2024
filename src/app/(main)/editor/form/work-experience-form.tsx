@@ -36,7 +36,6 @@ import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
 import { GenerateWorkExperienceButton } from "./generate-work-experience-button";
-import { Jacquarda_Bastarda_9_Charted } from "next/font/google";
 
 export const WorkExperienceForm = ({
   resumeData,
