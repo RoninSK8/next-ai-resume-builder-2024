@@ -7,6 +7,7 @@ import { Check } from "lucide-react";
 import { Button } from "../ui/button";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { createCheckoutSession } from "./actions";
+import { env } from "@/env";
 
 const premiumFeatures = ["AI tools", "Up to 3 resumes"];
 const premiumPlusFeatures = ["infinite resumes", "Design customizations"];
@@ -59,9 +60,7 @@ export const PremiumModal: React.FC = () => {
               <Button
                 disabled={loading}
                 onClick={() =>
-                  handlePremiumClick(
-                    process.env.NEXT_PUBLIC_STRIPE_ID_PRO_MONTHLY!,
-                  )
+                  handlePremiumClick(env.NEXT_PUBLIC_STRIPE_ID_PRO_MONTHLY)
                 }
               >
                 Get Premium
@@ -84,9 +83,7 @@ export const PremiumModal: React.FC = () => {
                 variant="premium"
                 disabled={loading}
                 onClick={() =>
-                  handlePremiumClick(
-                    process.env.NEXT_PUBLIC_STRIPE_ID_PRO_PLUS_MONTHLY!,
-                  )
+                  handlePremiumClick(env.NEXT_PUBLIC_STRIPE_ID_PRO_PLUS_MONTHLY)
                 }
               >
                 Get Premium Plus
