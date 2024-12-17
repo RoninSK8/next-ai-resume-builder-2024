@@ -1,18 +1,44 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Check } from "lucide-react";
 import { Button } from "../ui/button";
 import usePremiumModal from "@/hooks/use-premium-modal";
+import { createCheckoutSession } from "./actions";
 
 const premiumFeatures = ["AI tools", "Up to 3 resumes"];
 const premiumPlusFeatures = ["infinite resumes", "Design customizations"];
 
 export const PremiumModal: React.FC = () => {
   const { open, setOpen } = usePremiumModal();
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const handlePremiumClick = async (priceId: string) => {
+    try {
+      setLoading(true);
+      const redirectUrl = await createCheckoutSession(priceId);
+      window.location.href = redirectUrl;
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        description: "Something went wrong. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        if (!loading) {
+          setOpen(open);
+        }
+      }}
+    >
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>AI Resume Builder Premium</DialogTitle>
@@ -30,7 +56,16 @@ export const PremiumModal: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <Button>Get Premium</Button>
+              <Button
+                disabled={loading}
+                onClick={() =>
+                  handlePremiumClick(
+                    process.env.NEXT_PUBLIC_STRIPE_ID_PRO_MONTHLY!,
+                  )
+                }
+              >
+                Get Premium
+              </Button>
             </div>
             <div className="mx-6 border-l" />
             <div className="flex w-1/2 flex-col space-y-5">
@@ -45,7 +80,17 @@ export const PremiumModal: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <Button variant="premium">Get Premium Plus</Button>
+              <Button
+                variant="premium"
+                disabled={loading}
+                onClick={() =>
+                  handlePremiumClick(
+                    process.env.NEXT_PUBLIC_STRIPE_ID_PRO_PLUS_MONTHLY!,
+                  )
+                }
+              >
+                Get Premium Plus
+              </Button>
             </div>
           </div>
         </div>
