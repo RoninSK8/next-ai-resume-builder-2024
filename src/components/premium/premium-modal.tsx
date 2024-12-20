@@ -60,7 +60,9 @@ export const PremiumModal: React.FC = () => {
               <Button
                 disabled={loading}
                 onClick={() =>
-                  handlePremiumClick(env.NEXT_PUBLIC_STRIPE_ID_PRO_MONTHLY)
+                  handlePremiumClick(
+                    env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_MONTHLY,
+                  )
                 }
               >
                 Get Premium
@@ -83,7 +85,9 @@ export const PremiumModal: React.FC = () => {
                 variant="premium"
                 disabled={loading}
                 onClick={() =>
-                  handlePremiumClick(env.NEXT_PUBLIC_STRIPE_ID_PRO_PLUS_MONTHLY)
+                  handlePremiumClick(
+                    env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_PLUS_MONTHLY,
+                  )
                 }
               >
                 Get Premium Plus
