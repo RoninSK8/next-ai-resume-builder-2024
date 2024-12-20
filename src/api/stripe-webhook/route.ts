@@ -1,9 +1,9 @@
-import { useContext } from "react";
 import { env } from "@/env";
 import { NextRequest } from "next/server";
 import stripe from "@/lib/stripe";
 import Stripe from "stripe";
 import { clerkClient } from "@clerk/nextjs/server";
+import prisma from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   try {
@@ -55,6 +55,47 @@ async function handleSessionCompleted(session: Stripe.Checkout.Session) {
     },
   });
 }
-async function handleSessionCreatedOrUpdated(subscriptionId: string) {}
+async function handleSessionCreatedOrUpdated(subscriptionId: string) {
+  const subscription = await stripe.subscriptions.retrieve(subscriptionId);
 
-async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {}
+  if (
+    subscription.status === "active" ||
+    subscription.status === "trialing" ||
+    subscription.status === "past_due"
+  ) {
+    await prisma.userSubscription.upsert({
+      where: {
+        userId: subscription.metadata.userId,
+      },
+      create: {
+        userId: subscription.metadata.userId,
+        stripeSubscriptionId: subscription.id,
+        stripeCustomerId: subscription.customer as string,
+        stripePriceId: subscription.items.data[0].price.id,
+        stripeCurrentPeriodEnd: new Date(
+          subscription.current_period_end * 1000,
+        ),
+        stripeCancelAtPeriodEnd: subscription.cancel_at_period_end,
+      },
+      update: {
+        stripePriceId: subscription.items.data[0].price.id,
+        stripeCurrentPeriodEnd: new Date(
+          subscription.current_period_end * 1000,
+        ),
+        stripeCancelAtPeriodEnd: subscription.cancel_at_period_end,
+      },
+    });
+  } else {
+    await prisma.userSubscription.deleteMany({
+      where: {
+        stripeCustomerId: subscription.customer as string,
+      },
+    });
+  }
+}
+
+async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
+  await prisma.userSubscription.deleteMany({
+    where: { stripeCustomerId: subscription.customer as string },
+  });
+}
