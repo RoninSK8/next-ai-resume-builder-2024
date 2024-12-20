@@ -8,6 +8,8 @@ import { Button } from "../ui/button";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { createCheckoutSession } from "./actions";
 import { env } from "@/env";
+import { useSubscriptionLevel } from "@/app/(main)/subscription-level-provider";
+import { canPurchasePro, canPurchaseProPlus } from "@/lib/permissions";
 
 const premiumFeatures = ["AI tools", "Up to 3 resumes"];
 const premiumPlusFeatures = ["infinite resumes", "Design customizations"];
@@ -16,6 +18,7 @@ export const PremiumModal: React.FC = () => {
   const { open, setOpen } = usePremiumModal();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const subscriptionLevel = useSubscriptionLevel();
   const handlePremiumClick = async (priceId: string) => {
     try {
       setLoading(true);
@@ -58,14 +61,19 @@ export const PremiumModal: React.FC = () => {
                 ))}
               </ul>
               <Button
-                disabled={loading}
+                disabled={loading || !canPurchasePro(subscriptionLevel)}
                 onClick={() =>
                   handlePremiumClick(
                     env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_MONTHLY,
                   )
                 }
               >
-                Get Premium
+                {subscriptionLevel !== "free" && (
+                  <Check className="size-4 text-green-500" />
+                )}
+                {subscriptionLevel === "free"
+                  ? "Get Premium"
+                  : "Already active"}
               </Button>
             </div>
             <div className="mx-6 border-l" />
@@ -83,14 +91,19 @@ export const PremiumModal: React.FC = () => {
               </ul>
               <Button
                 variant="premium"
-                disabled={loading}
+                disabled={loading || !canPurchaseProPlus(subscriptionLevel)}
                 onClick={() =>
                   handlePremiumClick(
                     env.NEXT_PUBLIC_STRIPE_PRICE_ID_PRO_PLUS_MONTHLY,
                   )
                 }
               >
-                Get Premium Plus
+                {subscriptionLevel === "pro_plus" && (
+                  <Check className="size-4 text-green-500" />
+                )}
+                {subscriptionLevel === "pro_plus"
+                  ? "Already active"
+                  : "Get Premium Plus"}
               </Button>
             </div>
           </div>
