@@ -53,7 +53,11 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
               showSmResumePreview && "hidden",
             )}
           >
-            <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
+            <Breadcrumbs
+              className="sticky -top-3 bg-background p-3"
+              currentStep={currentStep}
+              setCurrentStep={setStep}
+            />
             {FormComponent && (
               <FormComponent
                 resumeData={resumeData}

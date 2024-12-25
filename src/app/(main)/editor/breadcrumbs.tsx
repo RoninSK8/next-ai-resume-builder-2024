@@ -8,18 +8,21 @@ import {
 } from "@/components/ui/breadcrumb";
 import React from "react";
 import { steps } from "./steps";
+import { cn } from "@/lib/utils";
 
 interface BreadcrumbsProps {
   currentStep: string;
   setCurrentStep: (step: string) => void;
+  className?: string;
 }
 
 export default function Breadcrumbs({
   currentStep,
   setCurrentStep,
+  className,
 }: BreadcrumbsProps) {
   return (
-    <div className="flex justify-center">
+    <div className={cn("flex justify-center", className)}>
       <Breadcrumb>
         <BreadcrumbList>
           {steps.map((step) => (
