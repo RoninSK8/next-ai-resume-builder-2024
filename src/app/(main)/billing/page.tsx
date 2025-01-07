@@ -6,6 +6,7 @@ import Stripe from "stripe";
 import { formatDate } from "date-fns";
 import { ManageSubscriptionButton } from "./manage-subscription-button";
 import { GetSubscriptionButton } from "./get-subscription-button";
+import { AvailablePlansTable } from "@/components/premium/available-plans-table";
 
 export const metadata: Metadata = {
   title: "Billing",
@@ -30,7 +31,9 @@ export default async function Page() {
 
   return (
     <main className="mx-auto w-full max-w-7xl space-y-6 px-3 py-6">
-      <h1 className="text-3xl font-bold">Billing</h1>
+      <h1 className="text-center text-3xl font-bold">Billing</h1>
+      <AvailablePlansTable />
+      <div className="my-6 border-t" />
       <p>
         Your current plan:{" "}
         <span className="font-bold">
