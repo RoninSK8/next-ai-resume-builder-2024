@@ -1,16 +1,32 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
+
+const intlMiddleware = createMiddleware(routing);
 
 const isPublicRoute = createRouteMatcher([
   "/",
-  "/sign-in(.*)",
+  "/:locale/",
   "/sign-up(.*)",
+  "/:locale/sign-up(.*)",
+  "/sign-in(.*)",
+  "/:locale/sign-in(.*)",
   "/api/stripe-webhook",
+  "/:locale/api/stripe-webhook",
 ]);
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
     await auth.protect();
   }
+
+  // do not localize api routes
+  const path = request.nextUrl.pathname;
+  if (path.includes("/api")) {
+    return;
+  }
+
+  return intlMiddleware(request);
 });
 
 export const config = {
