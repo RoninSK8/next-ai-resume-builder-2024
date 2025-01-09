@@ -3,11 +3,11 @@ import React from "react";
 import { Check, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useSubscriptionLevel } from "@/app/(main)/subscription-level-provider";
 import { createCheckoutSession } from "./actions";
 import { canPurchasePro, canPurchaseProPlus } from "@/lib/permissions";
 import { env } from "@/env";
 import useModalLoading from "@/hooks/use-modal-loading";
+import { useSubscriptionLevel } from "@/app/[locale]/(main)/subscription-level-provider";
 
 const freeFeatures = ["Add single resume"];
 const premiumFeatures = ["Up to 3 resumes", "AI tools"];
