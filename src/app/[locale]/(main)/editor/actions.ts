@@ -1,8 +1,7 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
-import { resumeSchema } from "./../../../lib/validation";
 
-import { ResumeValues } from "@/lib/validation";
+import { resumeSchema, ResumeValues } from "@/lib/validation";
 import prisma from "@/lib/prisma";
 import { del, put } from "@vercel/blob";
 import path from "path";
