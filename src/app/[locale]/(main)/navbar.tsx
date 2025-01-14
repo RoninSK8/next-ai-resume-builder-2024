@@ -8,6 +8,7 @@ import { CreditCard } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
+import LocaleSelector from "@/components/locale-selector";
 
 export default function Navbar() {
   const { theme, systemTheme } = useTheme();
@@ -28,6 +29,7 @@ export default function Navbar() {
           </span>
         </Link>
         <div className="flex items-center gap-3">
+          <LocaleSelector />
           <ThemeToggle />
           <UserButton
             appearance={{
