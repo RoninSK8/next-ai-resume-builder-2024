@@ -1,4 +1,7 @@
 {
+  "CreateResumeButton": {
+    "new-resume": ""
+  },
   "HomePage": {
     "ai-resume-builder": "ИИ-конструктор резюме",
     "create-the": "Создайте",
@@ -8,6 +11,9 @@
     "our": "Наш",
     "perfect-resume": "Идеальное Резюме",
     "resume-preview": "Превью резюме"
+  },
+  "Metadata": {
+    "your-resumes": "Ваши резюме"
   },
   "Navbar": {
     "billing": "Платежи"
@@ -24,5 +30,10 @@
     "something-went-wrong": "Что-то пошло не так. Пожалуйста, попробуйте снова.",
     "this-will-permanently-delete": "Это навсегда удалит это резюме. Это действие нельзя отменить.",
     "updated": "Обновлено"
-  }
+  },
+  "ResumesPage": {
+    "total": "Всего:",
+    "your-resumes": "Ваши резюме"
+  },
+  "new-resume": "Новое резюме"
 }

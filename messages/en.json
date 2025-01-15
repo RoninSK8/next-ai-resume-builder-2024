@@ -1,4 +1,7 @@
 {
+  "CreateResumeButton": {
+    "new-resume": "New resume"
+  },
   "HomePage": {
     "ai-resume-builder": "AI resume builder",
     "create-the": "Create the",
@@ -8,6 +11,9 @@
     "our": "Our",
     "perfect-resume": "Perfect Resume",
     "resume-preview": "Resume preview"
+  },
+  "Metadata": {
+    "your-resumes": "Your resumes"
   },
   "Navbar": {
     "billing": "Billing"
@@ -24,5 +30,10 @@
     "something-went-wrong": "Something went wrong. Please try again.",
     "this-will-permanently-delete": "This will permanently delete this resume. This action cannot be undone.",
     "updated": "Updated"
-  }
+  },
+  "ResumesPage": {
+    "total": "Total:",
+    "your-resumes": "Your resumes"
+  },
+  "new-resume": "New resume"
 }
