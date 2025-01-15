@@ -10,7 +10,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { ResumeServerData } from "@/lib/types";
 import { mapToResumeValues } from "@/lib/utils";
-import { formatDate } from "date-fns";
 import { MoreVertical, Printer, Trash2 } from "lucide-react";
 import Link from "next/link";
 import React, { useRef } from "react";
@@ -25,8 +24,8 @@ import {
 } from "@/components/ui/dialog";
 import { LoadingButton } from "@/components/loading-button";
 import { useReactToPrint } from "react-to-print";
-import { useLocale, useTranslations } from "next-intl";
-import { enUS, ru, Locale } from "date-fns/locale";
+import { useTranslations } from "next-intl";
+import { useFormatter } from "next-intl";
 
 interface ResumeItemProps {
   resume: ResumeServerData;
@@ -35,21 +34,8 @@ interface ResumeItemProps {
 export const ResumeItem: React.FC<ResumeItemProps> = ({ resume }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("ResumeItem");
-  const locale = useLocale();
-  const dateSettings: {
-    dateLocale?: Locale;
-    dateFormat?: string;
-  } = {};
-  if (locale === "en") {
-    dateSettings.dateLocale = enUS;
-    dateSettings.dateFormat = "MMM d, yyyy h:mm a";
-  } else if (locale === "ru") {
-    dateSettings.dateLocale = ru;
-    dateSettings.dateFormat = "hh:mm dd.MM.yyyy";
-  } else {
-    dateSettings.dateLocale = enUS;
-    dateSettings.dateFormat = "MMM d, yyyy h:mm a";
-  }
+  const format = useFormatter();
+  const dateTime = resume.createdAt;
   const reactToPrintFn = useReactToPrint({
     contentRef,
     documentTitle: resume.title || t("resume"),
@@ -71,8 +57,12 @@ export const ResumeItem: React.FC<ResumeItemProps> = ({ resume }) => {
           )}
           <p className="text-xs text-muted-foreground">
             {wasUpdated ? t("updated") : t("created")} {t("on")}{" "}
-            {formatDate(resume.createdAt, dateSettings.dateFormat, {
-              locale: dateSettings.dateLocale,
+            {format.dateTime(dateTime, {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
             })}
           </p>
         </Link>
