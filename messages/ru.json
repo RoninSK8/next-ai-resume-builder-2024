@@ -1,6 +1,12 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "ai-resume-builder": "ИИ-конструктор резюме",
+    "create-the": "Создайте",
+    "get-started": "Начать",
+    "in-minutes": "за считанные минуты",
+    "is-a-simple": "— это простой и удобный инструмент, который поможет вам создать профессиональное резюме и получить работу мечты.",
+    "our": "Наш",
+    "perfect-resume": "Идеальное Резюме",
+    "resume-preview": "Превью резюме"
   }
 }

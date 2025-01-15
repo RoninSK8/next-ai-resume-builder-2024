@@ -1,6 +1,12 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "ai-resume-builder": "AI resume builder",
+    "create-the": "Create the",
+    "get-started": "Get started",
+    "in-minutes": "in Minutes",
+    "is-a-simple": "is a simple and easy-to-use tool that allows you to create a professional resume that will help you land your dream job.",
+    "our": "Our",
+    "perfect-resume": "Perfect Resume",
+    "resume-preview": "Resume preview"
   }
 }
