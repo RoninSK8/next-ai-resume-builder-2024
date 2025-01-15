@@ -25,6 +25,8 @@ import {
 } from "@/components/ui/dialog";
 import { LoadingButton } from "@/components/loading-button";
 import { useReactToPrint } from "react-to-print";
+import { useLocale, useTranslations } from "next-intl";
+import { enUS, ru, Locale } from "date-fns/locale";
 
 interface ResumeItemProps {
   resume: ResumeServerData;
@@ -32,10 +34,25 @@ interface ResumeItemProps {
 
 export const ResumeItem: React.FC<ResumeItemProps> = ({ resume }) => {
   const contentRef = useRef<HTMLDivElement>(null);
-
+  const t = useTranslations("ResumeItem");
+  const locale = useLocale();
+  const dateSettings: {
+    dateLocale?: Locale;
+    dateFormat?: string;
+  } = {};
+  if (locale === "en") {
+    dateSettings.dateLocale = enUS;
+    dateSettings.dateFormat = "MMM d, yyyy h:mm a";
+  } else if (locale === "ru") {
+    dateSettings.dateLocale = ru;
+    dateSettings.dateFormat = "hh:mm dd.MM.yyyy";
+  } else {
+    dateSettings.dateLocale = enUS;
+    dateSettings.dateFormat = "MMM d, yyyy h:mm a";
+  }
   const reactToPrintFn = useReactToPrint({
     contentRef,
-    documentTitle: resume.title || "Resume",
+    documentTitle: resume.title || t("resume"),
   });
 
   const wasUpdated = resume.updatedAt !== resume.createdAt;
@@ -47,14 +64,16 @@ export const ResumeItem: React.FC<ResumeItemProps> = ({ resume }) => {
           className="inline-block w-full text-center"
         >
           <p className="line-clamp-1 font-semibold">
-            {resume.title || "No title"}
+            {resume.title || t("no-title")}
           </p>
           {resume.description && (
             <p className="line-clamp-2 text-sm">{resume.description}</p>
           )}
           <p className="text-xs text-muted-foreground">
-            {wasUpdated ? "Updated " : "Created "} on{" "}
-            {formatDate(resume.createdAt, "MMM d, yyyy h:mm a")}
+            {wasUpdated ? t("updated") : t("created")} {t("on")}{" "}
+            {formatDate(resume.createdAt, dateSettings.dateFormat, {
+              locale: dateSettings.dateLocale,
+            })}
           </p>
         </Link>
         <Link
@@ -82,6 +101,7 @@ interface MoreMenuProps {
 const MoreMenu: React.FC<MoreMenuProps> = ({ resumeId, onPrintClick }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] =
     React.useState(false);
+  const t = useTranslations("ResumeItem");
 
   return (
     <>
@@ -101,14 +121,14 @@ const MoreMenu: React.FC<MoreMenuProps> = ({ resumeId, onPrintClick }) => {
             className="flex items-center gap-2"
           >
             <Trash2 className="size-4" />
-            Delete
+            {t("delete")}
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={onPrintClick}
             className="flex items-center gap-2"
           >
             <Printer className="size-4" />
-            Print
+            {t("print")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -135,7 +155,7 @@ const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
   const { toast } = useToast();
 
   const [isPending, startTransition] = React.useTransition();
-
+  const t = useTranslations("ResumeItem");
   const handleDelete = async () => {
     startTransition(async () => {
       try {
@@ -145,7 +165,7 @@ const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
         console.error(error);
         toast({
           variant: "destructive",
-          description: "Something went wrong. Please try again.",
+          description: t("something-went-wrong"),
         });
       }
     });
@@ -155,10 +175,9 @@ const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete resume?</DialogTitle>
+          <DialogTitle>{t("delete-resume")}</DialogTitle>
           <DialogDescription>
-            This will permanently delete this resume. This action cannot be
-            undone.
+            {t("this-will-permanently-delete")}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -167,10 +186,10 @@ const DeleteConfirmationDialog: React.FC<DeleteConfirmationDialogProps> = ({
             onClick={handleDelete}
             loading={isPending}
           >
-            Delete
+            {t("delete")}
           </LoadingButton>
           <Button variant="secondary" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("cancel")}
           </Button>
         </DialogFooter>
       </DialogContent>

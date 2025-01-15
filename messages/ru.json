@@ -8,5 +8,21 @@
     "our": "Наш",
     "perfect-resume": "Идеальное Резюме",
     "resume-preview": "Превью резюме"
+  },
+  "Navbar": {
+    "billing": "Платежи"
+  },
+  "ResumeItem": {
+    "cancel": "Отмена",
+    "created": "Создано",
+    "delete": "Удалить",
+    "delete-resume": "Удалить резюме?",
+    "no-title": "Без заголовка",
+    "on": "",
+    "print": "Печать",
+    "resume": "Резюме",
+    "something-went-wrong": "Что-то пошло не так. Пожалуйста, попробуйте снова.",
+    "this-will-permanently-delete": "Это навсегда удалит это резюме. Это действие нельзя отменить.",
+    "updated": "Обновлено"
   }
 }

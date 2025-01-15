@@ -9,10 +9,12 @@ import ThemeToggle from "@/components/theme-toggle";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 import LocaleSelector from "@/components/locale-selector";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const { theme, systemTheme } = useTheme();
   const selectedTheme = theme === "system" ? systemTheme : theme;
+  const t = useTranslations("Navbar");
   return (
     <header className="shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 p-3">
@@ -44,7 +46,7 @@ export default function Navbar() {
           >
             <UserButton.MenuItems>
               <UserButton.Link
-                label="Billing"
+                label={t("billing")}
                 labelIcon={<CreditCard className="size-4" />}
                 href="/billing"
               />

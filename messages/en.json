@@ -8,5 +8,21 @@
     "our": "Our",
     "perfect-resume": "Perfect Resume",
     "resume-preview": "Resume preview"
+  },
+  "Navbar": {
+    "billing": "Billing"
+  },
+  "ResumeItem": {
+    "cancel": "Cancel",
+    "created": "Created",
+    "delete": "Delete",
+    "delete-resume": "Delete resume?",
+    "no-title": "No title",
+    "on": "on",
+    "print": "Print",
+    "resume": "Resume",
+    "something-went-wrong": "Something went wrong. Please try again.",
+    "this-will-permanently-delete": "This will permanently delete this resume. This action cannot be undone.",
+    "updated": "Updated"
   }
 }
