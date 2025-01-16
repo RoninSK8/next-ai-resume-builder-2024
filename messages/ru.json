@@ -16,6 +16,17 @@
     "summary": "Обо мне",
     "work-experience": "Опыт работы"
   },
+  "EducationForm": {
+    "add-as-many-work-educations-as-you-like": "Добавьте необходимое количество записей об образовании.",
+    "add-education": "Добавить запись",
+    "degree": "Степень",
+    "education": "Образование",
+    "end-date": "Дата окончания",
+    "remove": "Удалить",
+    "school": "Образовательное учреждение",
+    "start-date": "Дата начала",
+    "you-can-add-multiple-educations": "Добавьте необходимое количество записей об образовании."
+  },
   "Footer": {
     "close": "Закрыть",
     "next-step": "Вперёд",
@@ -64,6 +75,21 @@
   "ResumesPage": {
     "total": "Всего:",
     "your-resumes": "Ваши резюме"
+  },
+  "WorkExperienceForm": {
+    "add-as-many-work-experiences-as-you-like": "Добавьте необходимое количество записей об опыте работы.",
+    "add-work-experience": "Добавить опыт работы",
+    "company": "Компания",
+    "description": "Описание",
+    "empty-if-you-are-currently-working-here": "пустой, если вы ещё работаете здесь.",
+    "end-date": "Дата окончания",
+    "end-date-span": "дату окончания",
+    "job-title": "Должность",
+    "leave": "Оставьте",
+    "remove": "Удалить",
+    "start-date": "Дата начала",
+    "work-experience": "Опыт работы",
+    "work-experience-header": "Опыт работы"
   },
   "new-resume": "Новое резюме"
 }

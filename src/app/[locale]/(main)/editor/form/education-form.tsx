@@ -33,6 +33,7 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export const EducationForm = ({
   resumeData,
@@ -79,12 +80,14 @@ export const EducationForm = ({
     }
   }
 
+  const t = useTranslations("EducationForm");
+
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-y-1.5 text-center">
-        <h2 className="text-2xl font-semibold">Education</h2>
+        <h2 className="text-2xl font-semibold">{t("education")}</h2>
         <p className="text-sm text-muted-foreground">
-          Add as many work educations as you like.
+          {t("you-can-add-multiple-educations")}
         </p>
       </div>
       <Form {...form}>
@@ -122,7 +125,7 @@ export const EducationForm = ({
                 })
               }
             >
-              Add education
+              {t("add-education")}
             </Button>
           </div>
         </form>
@@ -147,6 +150,9 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
     attributes,
     setNodeRef,
   } = useSortable({ id });
+
+  const t = useTranslations("EducationForm");
+
   return (
     <div
       className={cn(
@@ -160,7 +166,9 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
       }}
     >
       <div className="flex justify-between gap-2">
-        <span className="font-semibold">Education {index + 1}</span>
+        <span className="font-semibold">
+          {t("education")} {index + 1}
+        </span>
         <GripHorizontal
           className="size-5 cursor-grab text-muted-foreground focus:outline-none"
           {...attributes}
@@ -172,7 +180,7 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
         name={`educations.${index}.degree`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Degree</FormLabel>
+            <FormLabel>{t("degree")}</FormLabel>
             <FormControl>
               <Input {...field} autoFocus />
             </FormControl>
@@ -185,7 +193,7 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
         name={`educations.${index}.school`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>School</FormLabel>
+            <FormLabel>{t("school")}</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>
@@ -199,7 +207,7 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
           name={`educations.${index}.startDate`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Start date</FormLabel>
+              <FormLabel>{t("start-date")}</FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -216,7 +224,7 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
           name={`educations.${index}.endDate`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>End date</FormLabel>
+              <FormLabel>{t("end-date")}</FormLabel>
               <FormControl>
                 <Input
                   {...field}
@@ -231,7 +239,7 @@ function EducationItem({ id, form, index, remove }: EducationItemProps) {
       </div>
 
       <Button variant="destructive" onClick={() => remove(index)}>
-        Remove
+        {t("remove")}
       </Button>
     </div>
   );

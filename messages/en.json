@@ -16,6 +16,17 @@
     "summary": "Summary",
     "work-experience": "Work experience"
   },
+  "EducationForm": {
+    "add-as-many-work-educations-as-you-like": "Add as many work educations as you like.",
+    "add-education": "Add education",
+    "degree": "Degree",
+    "education": "Education",
+    "end-date": "End date",
+    "remove": "Remove",
+    "school": "School",
+    "start-date": "Start date",
+    "you-can-add-multiple-educations": "You can add multiple educations."
+  },
   "Footer": {
     "close": "Close",
     "next-step": "Next step",
@@ -64,6 +75,21 @@
   "ResumesPage": {
     "total": "Total:",
     "your-resumes": "Your resumes"
+  },
+  "WorkExperienceForm": {
+    "add-as-many-work-experiences-as-you-like": "Add as many work experiences as you like.",
+    "add-work-experience": "Add work experience",
+    "company": "Company",
+    "description": "Description",
+    "empty-if-you-are-currently-working-here": "empty if you are currently working here.",
+    "end-date": "End date",
+    "end-date-span": "end date",
+    "job-title": "Job title",
+    "leave": "Leave",
+    "remove": "Remove",
+    "start-date": "Start date",
+    "work-experience": "Work experience",
+    "work-experience-header": "Work experience"
   },
   "new-resume": "New resume"
 }
