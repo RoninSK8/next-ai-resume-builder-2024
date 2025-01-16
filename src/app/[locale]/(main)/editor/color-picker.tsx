@@ -10,6 +10,7 @@ import { Color, ColorChangeHandler, TwitterPicker } from "react-color";
 import { useSubscriptionLevel } from "../subscription-level-provider";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { canUseCustomizations } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 interface ColorPickerProps {
   color: Color | undefined;
@@ -23,13 +24,14 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   const [showPopover, setShowPopover] = React.useState(false);
   const subscriptionLevel = useSubscriptionLevel();
   const premiumModal = usePremiumModal();
+  const t = useTranslations("ColorPicker");
   return (
     <Popover open={showPopover} onOpenChange={setShowPopover}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           size="icon"
-          title="Change resume color"
+          title={t("change-resume-color")}
           onClick={() => {
             if (!canUseCustomizations(subscriptionLevel)) {
               premiumModal.setOpen(true);

@@ -1,4 +1,10 @@
 {
+  "BorderStyleButton": {
+    "change-border-style": "Выбрать тип рамки"
+  },
+  "ColorPicker": {
+    "change-resume-color": "Выбрать цвет резюме"
+  },
   "CreateResumeButton": {
     "new-resume": "Новое резюме"
   },
@@ -10,6 +16,14 @@
     "summary": "Обо мне",
     "work-experience": "Опыт работы"
   },
+  "Footer": {
+    "close": "Закрыть",
+    "next-step": "Вперёд",
+    "previous-step": "Назад",
+    "saving": "Сохранение...",
+    "show-input-form": "Открыть редактор",
+    "show-resume-preview": "Открыть превью резюме"
+  },
   "HomePage": {
     "ai-resume-builder": "ИИ-конструктор резюме",
     "create-the": "Создайте",
@@ -20,11 +34,19 @@
     "perfect-resume": "Идеальное Резюме",
     "resume-preview": "Превью резюме"
   },
+  "LocaleSelector": {
+    "select-a-locale": "Выберите язык"
+  },
   "Metadata": {
+    "design-your-resume": "Создайте своё резюме",
     "your-resumes": "Ваши резюме"
   },
   "Navbar": {
     "billing": "Платежи"
+  },
+  "ResumeEditor": {
+    "design-your-resume": "Создайте своё резюме",
+    "follow-the-steps": "Следуйте пунктам ниже, чтобы создать своё резюме. Изменения будут сохраняться автоматически."
   },
   "ResumeItem": {
     "cancel": "Отмена",

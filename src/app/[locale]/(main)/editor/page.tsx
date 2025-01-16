@@ -3,14 +3,24 @@ import ResumeEditor from "./resume-editor";
 import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/prisma";
 import { resumeDataInclude } from "@/lib/types";
+import { getTranslations } from "next-intl/server";
+import { Locale } from "date-fns";
 
 interface PageProps {
   searchParams: Promise<{ resumeId?: string }>;
 }
 
-export const metadata: Metadata = {
-  title: "Design your resume",
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("design-your-resume"),
+  };
+}
 
 export default async function Page({ searchParams }: PageProps) {
   const { resumeId } = await searchParams;

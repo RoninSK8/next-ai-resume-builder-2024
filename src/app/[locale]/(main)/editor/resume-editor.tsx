@@ -10,6 +10,7 @@ import { cn, mapToResumeValues } from "@/lib/utils";
 import useAutoSaveResume from "./useAutoSaveResume";
 import useUnloadWarning from "@/hooks/useUnloadWarning";
 import { ResumeServerData } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 interface ResumeEditorProps {
   resumeToEdit: ResumeServerData | null;
@@ -32,6 +33,8 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
     window.history.pushState(null, "", `?${newSearchParams.toString()}`);
   };
 
+  const t = useTranslations("ResumeEditor");
+
   const FormComponent = steps.find(
     (step) => step.key === currentStep,
   )?.component;
@@ -39,11 +42,8 @@ export default function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
   return (
     <div className="flex grow flex-col">
       <header className="space-y-1.5 border-b px-3 py-5 text-center">
-        <h1 className="text-2xl font-bold">Design your resume</h1>
-        <p className="text-sm text-muted-foreground">
-          Follow the steps below to create your resume. Your progress will be
-          saved automatically.
-        </p>
+        <h1 className="text-2xl font-bold">{t("design-your-resume")}</h1>
+        <p className="text-sm text-muted-foreground">{t("follow-the-steps")}</p>
       </header>
       <main className="relative grow">
         <div className="absolute bottom-0 top-0 flex w-full">

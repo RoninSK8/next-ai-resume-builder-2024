@@ -4,6 +4,7 @@ import React from "react";
 import { useSubscriptionLevel } from "../subscription-level-provider";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { canUseCustomizations } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 export const BorderStyles = {
   SQUARE: "square",
@@ -41,11 +42,13 @@ export const BorderStyleButton: React.FC<BorderStyleButtonProps> = ({
         ? Circle
         : Squircle;
 
+  const t = useTranslations("BorderStyleButton");
+
   return (
     <Button
       variant="outline"
       size="icon"
-      title="Change border style"
+      title={t("change-border-style")}
       onClick={handleClick}
     >
       <Icon className="size-5" />
