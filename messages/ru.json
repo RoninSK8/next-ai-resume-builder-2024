@@ -1,6 +1,14 @@
 {
   "CreateResumeButton": {
-    "new-resume": ""
+    "new-resume": "Новое резюме"
+  },
+  "EditorSteps": {
+    "education": "Образование",
+    "general-info": "Общая информация",
+    "personal-info": "Персональные данные",
+    "skill": "Навыки",
+    "summary": "Обо мне",
+    "work-experience": "Опыт работы"
   },
   "HomePage": {
     "ai-resume-builder": "ИИ-конструктор резюме",

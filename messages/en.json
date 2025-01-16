@@ -2,6 +2,14 @@
   "CreateResumeButton": {
     "new-resume": "New resume"
   },
+  "EditorSteps": {
+    "education": "Education",
+    "general-info": "General info",
+    "personal-info": "Personal info",
+    "skill": "Skills",
+    "summary": "Summary",
+    "work-experience": "Work experience"
+  },
   "HomePage": {
     "ai-resume-builder": "AI resume builder",
     "create-the": "Create the",

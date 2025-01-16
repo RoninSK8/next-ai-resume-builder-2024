@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,9 +7,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import React from "react";
-import { steps } from "./steps";
+
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { steps } from "./steps";
 
 interface BreadcrumbsProps {
   currentStep: string;
@@ -21,6 +23,8 @@ export default function Breadcrumbs({
   setCurrentStep,
   className,
 }: BreadcrumbsProps) {
+  const t = useTranslations("EditorSteps");
+
   return (
     <div className={cn("flex justify-center", className)}>
       <Breadcrumb>
@@ -29,11 +33,11 @@ export default function Breadcrumbs({
             <React.Fragment key={step.key}>
               <BreadcrumbItem>
                 {step.key === currentStep ? (
-                  <BreadcrumbPage>{step.title}</BreadcrumbPage>
+                  <BreadcrumbPage>{t(step.key)}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
                     <button onClick={() => setCurrentStep(step.key)}>
-                      {step.title}
+                      {t(step.key)}
                     </button>
                   </BreadcrumbLink>
                 )}
