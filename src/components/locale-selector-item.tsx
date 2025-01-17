@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useSearchParams } from "next/navigation";
 import { Locale, routing, usePathname, useRouter } from "@/i18n/routing";
 import { useParams } from "next/navigation";
 import { ReactNode } from "react";
@@ -22,16 +23,16 @@ export default function LocaleSelectorItem({
   label,
 }: LocaleSelectorItemProps) {
   const router = useRouter();
-
   const pathname = usePathname();
   const params = useParams();
+  const searchParams = useSearchParams();
 
   function onSelectChange(nextLocale: string) {
     router.replace(
       // @ts-expect-error -- TypeScript will validate that only known `params`
       // are used in combination with a given `pathname`. Since the two will
       // always match for the current route, we can skip runtime checks.
-      { pathname, params },
+      { pathname, params, query: Object.fromEntries(searchParams.entries()) },
       { locale: nextLocale as Locale },
     );
   }
