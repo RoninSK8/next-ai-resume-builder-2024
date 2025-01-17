@@ -35,6 +35,15 @@
     "show-input-form": "Открыть редактор",
     "show-resume-preview": "Открыть превью резюме"
   },
+  "GeneralInfoForm": {
+    "a-resume-for-my-next-job": "Резюме для новой работы",
+    "describe-what-this-resume-is-for": "Опишите назначение этого резюме",
+    "description": "Описание",
+    "general-info": "Общая информация",
+    "my-cool-resume": "Моё идеальное резюме",
+    "project-name": "Название резюме",
+    "this-will-not-appear-on-your-resume": "Эти данные не будут отображаться в готовом резюме"
+  },
   "HomePage": {
     "ai-resume-builder": "ИИ-конструктор резюме",
     "create-the": "Создайте",
@@ -54,6 +63,19 @@
   },
   "Navbar": {
     "billing": "Платежи"
+  },
+  "PersonalInfoForm": {
+    "city": "Город",
+    "country": "Страна",
+    "email": "Email",
+    "first-name": "Имя",
+    "job-title": "Должность",
+    "last-name": "Фамилия",
+    "personal-info": "Персональные данные",
+    "phone": "Телефон",
+    "remove": "Удалить",
+    "tell-us-about-yourself": "Расскажите о себе",
+    "your-photo": "Ваше фото"
   },
   "ResumeEditor": {
     "design-your-resume": "Создайте своё резюме",
@@ -75,6 +97,17 @@
   "ResumesPage": {
     "total": "Всего:",
     "your-resumes": "Ваши резюме"
+  },
+  "SkillsForm": {
+    "e-g-react-js-node-js-graphic-design": "Пример: React.js, Node.js, графический дизайн, ...",
+    "separate-each-skill-with-a-comma": "Указывайте каждый навык через запятую.",
+    "skills": "Навыки",
+    "what-are-you-good-at": "Что вы умеете?"
+  },
+  "SummaryForm": {
+    "a-brief-engaging-text-about-yourself": "Краткая, но вызывающая интерес информация о себе",
+    "professional-summary": "Профессиональная характеристика",
+    "write-a-short-introduction-for-your-resume-or-let-ai-generate-one-from-your-entered-data": "Напишите короткую самопрезентацию для резюме или позвольте ИИ создать её из ваших данных."
   },
   "WorkExperienceForm": {
     "add-as-many-work-experiences-as-you-like": "Добавьте необходимое количество записей об опыте работы.",

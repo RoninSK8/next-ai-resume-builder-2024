@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { EditorFormProps } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 export default function GeneralInfoForm({
   resumeData,
@@ -38,12 +39,14 @@ export default function GeneralInfoForm({
     return unsubscribe;
   }, [form, resumeData, setResumeData]);
 
+  const t = useTranslations("GeneralInfoForm");
+
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-y-1.5 text-center">
-        <h2 className="text-2xl font-semibold">General info</h2>
+        <h2 className="text-2xl font-semibold">{t("general-info")}</h2>
         <p className="text-sm text-muted-foreground">
-          This will not appear on your resume
+          {t("this-will-not-appear-on-your-resume")}
         </p>
       </div>
       <Form {...form}>
@@ -53,9 +56,13 @@ export default function GeneralInfoForm({
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Project name</FormLabel>
+                <FormLabel>{t("project-name")}</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="My cool resume" autoFocus />
+                  <Input
+                    {...field}
+                    placeholder={t("my-cool-resume")}
+                    autoFocus
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -66,12 +73,15 @@ export default function GeneralInfoForm({
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("description")}</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="A resume for my next job" />
+                  <Input
+                    {...field}
+                    placeholder={t("a-resume-for-my-next-job")}
+                  />
                 </FormControl>
                 <FormDescription>
-                  Describe what this resume is for.
+                  {t("describe-what-this-resume-is-for")}
                 </FormDescription>
                 <FormMessage />
               </FormItem>

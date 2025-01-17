@@ -35,6 +35,15 @@
     "show-input-form": "Show input form",
     "show-resume-preview": "Show resume preview"
   },
+  "GeneralInfoForm": {
+    "a-resume-for-my-next-job": "A resume for my next job",
+    "describe-what-this-resume-is-for": "Describe what this resume is for",
+    "description": "Description",
+    "general-info": "General info",
+    "my-cool-resume": "My cool resume",
+    "project-name": "Project name",
+    "this-will-not-appear-on-your-resume": "This will not appear on your resume"
+  },
   "HomePage": {
     "ai-resume-builder": "AI resume builder",
     "create-the": "Create the",
@@ -54,6 +63,19 @@
   },
   "Navbar": {
     "billing": "Billing"
+  },
+  "PersonalInfoForm": {
+    "city": "City",
+    "country": "Country",
+    "email": "Email",
+    "first-name": "First name",
+    "job-title": "Job title",
+    "last-name": "Last name",
+    "personal-info": "Personal info",
+    "phone": "Phone",
+    "remove": "Remove",
+    "tell-us-about-yourself": "Tell us about yourself",
+    "your-photo": "Your photo"
   },
   "ResumeEditor": {
     "design-your-resume": "Design your resume",
@@ -75,6 +97,17 @@
   "ResumesPage": {
     "total": "Total:",
     "your-resumes": "Your resumes"
+  },
+  "SkillsForm": {
+    "e-g-react-js-node-js-graphic-design": "e.g. React.js, Node.js, graphic design, ...",
+    "separate-each-skill-with-a-comma": "Separate each skill with a comma.",
+    "skills": "Skills",
+    "what-are-you-good-at": "What are you good at?"
+  },
+  "SummaryForm": {
+    "a-brief-engaging-text-about-yourself": "A brief, engaging text about yourself",
+    "professional-summary": "Professional summary",
+    "write-a-short-introduction-for-your-resume-or-let-ai-generate-one-from-your-entered-data": "Write a short introduction for your resume or let AI generate one from your entered data."
   },
   "WorkExperienceForm": {
     "add-as-many-work-experiences-as-you-like": "Add as many work experiences as you like.",
