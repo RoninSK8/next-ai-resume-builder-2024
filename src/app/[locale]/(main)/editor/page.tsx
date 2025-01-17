@@ -8,13 +8,13 @@ import { Locale } from "date-fns";
 
 interface PageProps {
   searchParams: Promise<{ resumeId?: string }>;
+  params: Promise<{ locale: Locale }>;
 }
 
 export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: Locale };
-}): Promise<Metadata> {
+  params,
+}: PageProps): Promise<Metadata> {
+  const locale = (await params).locale;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {

@@ -8,12 +8,14 @@ import { getUserSubscriptionLevel } from "@/lib/subscriptions";
 import { canCreateResume } from "@/lib/permissions";
 import { getTranslations } from "next-intl/server";
 import { Locale } from "@/i18n/routing";
+interface PageProps {
+  params: Promise<{ locale: Locale }>;
+}
 
 export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: Locale };
-}): Promise<Metadata> {
+  params,
+}: PageProps): Promise<Metadata> {
+  const locale = (await params).locale;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
