@@ -44,6 +44,17 @@
     "project-name": "Project name",
     "this-will-not-appear-on-your-resume": "This will not appear on your resume"
   },
+  "GenerateSummaryButton": {
+    "generate-ai": "Generate (AI)"
+  },
+  "GenerateWorkExperienceButton": {
+    "describe-this-work-experience-and-the-ai-will-generate-an-optimized-entry-for-you": "Describe this work experience and the AI will generate an optimized entry for you.",
+    "description": "Description",
+    "example": "E.g \"from nov 2018 to jan 2020 i worked at Amazon as a QA engineer, tasks were: ...",
+    "generate": "Generate",
+    "generate-work-experience": "Generate work experience",
+    "smart-fill-ai": "Smart fill (AI)"
+  },
   "HomePage": {
     "ai-resume-builder": "AI resume builder",
     "create-the": "Create the",
@@ -108,6 +119,12 @@
     "a-brief-engaging-text-about-yourself": "A brief, engaging text about yourself",
     "professional-summary": "Professional summary",
     "write-a-short-introduction-for-your-resume-or-let-ai-generate-one-from-your-entered-data": "Write a short introduction for your resume or let AI generate one from your entered data."
+  },
+  "ThemeToggle": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "toggle-theme": "Toggle theme"
   },
   "WorkExperienceForm": {
     "add-as-many-work-experiences-as-you-like": "Add as many work experiences as you like.",

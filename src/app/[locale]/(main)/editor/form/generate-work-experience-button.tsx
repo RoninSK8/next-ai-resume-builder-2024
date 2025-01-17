@@ -30,6 +30,7 @@ import { LoadingButton } from "@/components/loading-button";
 import { useSubscriptionLevel } from "../../subscription-level-provider";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { canUseAITools } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 interface GenerateWorkExperienceButtonProps {
   onWorkExperienceGenerated: (workExperience: WorkExperience) => void;
@@ -41,6 +42,8 @@ export const GenerateWorkExperienceButton: React.FC<
   const subscriptionLevel = useSubscriptionLevel();
   const premiumModal = usePremiumModal();
   const [showInputDialog, setShowInputDialog] = React.useState(false);
+
+  const t = useTranslations("GenerateWorkExperienceButton");
 
   return (
     <>
@@ -56,7 +59,7 @@ export const GenerateWorkExperienceButton: React.FC<
         }}
       >
         <WandSparklesIcon className="size-4" />
-        Smart fill (AI)
+        {t("smart-fill-ai")}
       </Button>
       <InputDialog
         open={showInputDialog}
@@ -103,14 +106,17 @@ const InputDialog: React.FC<InputDialogProps> = ({
     }
   };
 
+  const t = useTranslations("GenerateWorkExperienceButton");
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Generate work experience</DialogTitle>
+          <DialogTitle>{t("generate-work-experience")}</DialogTitle>
           <DialogDescription>
-            Describe this work experience and the AI will generate an optimized
-            entry for you.
+            {t(
+              "describe-this-work-experience-and-the-ai-will-generate-an-optimized-entry-for-you",
+            )}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -120,12 +126,9 @@ const InputDialog: React.FC<InputDialogProps> = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{t("description")}</FormLabel>
                   <FormControl>
-                    <Textarea
-                      {...field}
-                      placeholder={`E.g "from nov 2018 to jan 2020 i worked at Amazon as a QA engineer, tasks were: ...`}
-                    />
+                    <Textarea {...field} placeholder={t("example")} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -133,7 +136,7 @@ const InputDialog: React.FC<InputDialogProps> = ({
             />
           </form>
           <LoadingButton type="submit" loading={form.formState.isSubmitting}>
-            Generate
+            {t("generate")}
           </LoadingButton>
         </Form>
       </DialogContent>

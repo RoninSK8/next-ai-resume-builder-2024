@@ -7,6 +7,7 @@ import { generateSummary } from "./actions";
 import { useSubscriptionLevel } from "../../subscription-level-provider";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { canUseAITools } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 interface GenerateSummaryButtonProps {
   resumeData: ResumeValues;
@@ -40,6 +41,9 @@ export const GenerateSummaryButton: React.FC<GenerateSummaryButtonProps> = ({
       setLoading(false);
     }
   };
+
+  const t = useTranslations("GenerateSummaryButton");
+
   return (
     <LoadingButton
       variant="outline"
@@ -48,7 +52,7 @@ export const GenerateSummaryButton: React.FC<GenerateSummaryButtonProps> = ({
       onClick={handleClick}
     >
       <WandSparklesIcon className="size-4" />
-      Generate (AI)
+      {t("generate-ai")}
     </LoadingButton>
   );
 };
