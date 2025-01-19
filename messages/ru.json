@@ -105,6 +105,14 @@
     "this-will-permanently-delete": "Это навсегда удалит это резюме. Это действие нельзя отменить.",
     "updated": "Обновлено"
   },
+  "ResumePreview": {
+    "author-photo": "Фото автора",
+    "education": "Образование",
+    "present": "по наcтоящее время",
+    "professional-profile": "Обо мне",
+    "skills": "Навыки",
+    "work-experience": "Опыт работы"
+  },
   "ResumesPage": {
     "total": "Всего:",
     "your-resumes": "Ваши резюме"

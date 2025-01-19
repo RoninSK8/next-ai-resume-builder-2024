@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { formatDate } from "date-fns";
 import { Badge } from "./ui/badge";
 import { BorderStyles } from "@/app/[locale]/(main)/editor/border-style-button";
+import { useTranslations } from "next-intl";
 
 interface ResumePreviewProps {
   contentRef?: React.Ref<HTMLDivElement>;
@@ -75,12 +76,14 @@ function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
     return () => URL.revokeObjectURL(objectUrl);
   }, [photo]);
 
+  const t = useTranslations("ResumePreview");
+
   return (
     <div className="flex items-center gap-6">
       {photoSrc && (
         <Image
           src={photoSrc}
-          alt="Author photo"
+          alt={t("author-photo")}
           width={100}
           height={100}
           className="aspect-square object-cover"
@@ -117,6 +120,7 @@ function PersonalInfoHeader({ resumeData }: ResumeSectionProps) {
 
 function SummarySection({ resumeData }: ResumeSectionProps) {
   const { summary, colorHex } = resumeData;
+  const t = useTranslations("ResumePreview");
 
   if (!summary) return null;
 
@@ -125,7 +129,7 @@ function SummarySection({ resumeData }: ResumeSectionProps) {
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="break-inside-avoid space-y-3">
         <p className="text-lg font-semibold" style={{ color: colorHex }}>
-          Professional profile
+          {t("professional-profile")}
         </p>
         <div className="whitespace-pre-line text-sm">{summary}</div>
       </div>
@@ -135,6 +139,7 @@ function SummarySection({ resumeData }: ResumeSectionProps) {
 
 function WorkExperienceSection({ resumeData }: ResumeSectionProps) {
   const { workExperiences, colorHex } = resumeData;
+  const t = useTranslations("ResumePreview");
 
   const workExperiencesNotEmpty = workExperiences?.filter(
     (exp) => Object.values(exp).filter(Boolean).length > 0,
@@ -147,7 +152,7 @@ function WorkExperienceSection({ resumeData }: ResumeSectionProps) {
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="space-y-3">
         <p className="text-lg font-semibold" style={{ color: colorHex }}>
-          Work experience
+          {t("work-experience")}
         </p>
         {workExperiencesNotEmpty.map((exp, index) => (
           <div key={index} className="break-inside-avoid space-y-1">
@@ -159,7 +164,9 @@ function WorkExperienceSection({ resumeData }: ResumeSectionProps) {
               {exp.startDate && (
                 <span>
                   {formatDate(exp.startDate, "MM/yyyy")} -{" "}
-                  {exp.endDate ? formatDate(exp.endDate, "MM/yyyy") : "Present"}
+                  {exp.endDate
+                    ? formatDate(exp.endDate, "MM/yyyy")
+                    : t("present")}
                 </span>
               )}
             </div>
@@ -173,6 +180,7 @@ function WorkExperienceSection({ resumeData }: ResumeSectionProps) {
 }
 function EducationSection({ resumeData }: ResumeSectionProps) {
   const { educations, colorHex } = resumeData;
+  const t = useTranslations("ResumePreview");
 
   const educationsNotEmpty = educations?.filter(
     (exp) => Object.values(exp).filter(Boolean).length > 0,
@@ -185,7 +193,7 @@ function EducationSection({ resumeData }: ResumeSectionProps) {
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="space-y-3">
         <p className="text-lg font-semibold" style={{ color: colorHex }}>
-          Education
+          {t("education")}
         </p>
         {educationsNotEmpty.map((edu, index) => (
           <div key={index} className="break-inside-avoid space-y-1">
@@ -211,6 +219,7 @@ function EducationSection({ resumeData }: ResumeSectionProps) {
 
 function SkillsSection({ resumeData }: ResumeSectionProps) {
   const { skills, colorHex, borderStyle } = resumeData;
+  const t = useTranslations("ResumePreview");
   if (!skills?.length) return null;
 
   return (
@@ -218,7 +227,7 @@ function SkillsSection({ resumeData }: ResumeSectionProps) {
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="break-inside-avoid space-y-3">
         <p className="text-lg font-semibold" style={{ color: colorHex }}>
-          Skills
+          {t("skills")}
         </p>
         <div className="flex break-inside-avoid flex-wrap gap-2">
           {skills.map((skill, index) => (

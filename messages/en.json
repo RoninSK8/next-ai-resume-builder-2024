@@ -105,6 +105,14 @@
     "this-will-permanently-delete": "This will permanently delete this resume. This action cannot be undone.",
     "updated": "Updated"
   },
+  "ResumePreview": {
+    "author-photo": "Author photo",
+    "education": "Education",
+    "present": "Present",
+    "professional-profile": "Professional profile",
+    "skills": "Skills",
+    "work-experience": "Work experience"
+  },
   "ResumesPage": {
     "total": "Total:",
     "your-resumes": "Your resumes"
