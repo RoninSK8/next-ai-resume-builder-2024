@@ -6,7 +6,7 @@ const intlMiddleware = createMiddleware(routing);
 
 const isPublicRoute = createRouteMatcher([
   "/",
-  "/:locale/",
+  "/:locale",
   "/sign-up(.*)",
   "/:locale/sign-up(.*)",
   "/sign-in(.*)",
