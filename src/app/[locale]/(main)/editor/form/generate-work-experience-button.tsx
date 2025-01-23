@@ -25,12 +25,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
 import { LoadingButton } from "@/components/loading-button";
 import { useSubscriptionLevel } from "../../subscription-level-provider";
 import usePremiumModal from "@/hooks/use-premium-modal";
 import { canUseAITools } from "@/lib/permissions";
 import { useTranslations } from "next-intl";
+import { AutosizeTextarea } from "@/components/ui/auto-size-textarea";
 
 interface GenerateWorkExperienceButtonProps {
   onWorkExperienceGenerated: (workExperience: WorkExperience) => void;
@@ -128,7 +128,12 @@ const InputDialog: React.FC<InputDialogProps> = ({
                 <FormItem>
                   <FormLabel>{t("description")}</FormLabel>
                   <FormControl>
-                    <Textarea {...field} placeholder={t("example")} />
+                    <AutosizeTextarea
+                      maxHeight={400}
+                      minHeight={100}
+                      {...field}
+                      placeholder={t("example")}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

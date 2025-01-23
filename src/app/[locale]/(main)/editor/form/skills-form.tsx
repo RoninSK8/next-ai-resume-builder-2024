@@ -1,3 +1,4 @@
+import { AutosizeTextarea } from "@/components/ui/auto-size-textarea";
 import {
   Form,
   FormControl,
@@ -7,7 +8,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
 import { EditorFormProps } from "@/lib/types";
 import { skillsSchema, SkillsValues } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -59,7 +59,8 @@ export const SkillsForm = ({ resumeData, setResumeData }: EditorFormProps) => {
               <FormItem>
                 <FormLabel className="sr-only">{t("skills")}</FormLabel>
                 <FormControl>
-                  <Textarea
+                  <AutosizeTextarea
+                    minHeight={100}
                     {...field}
                     placeholder={t("e-g-react-js-node-js-graphic-design")}
                     onChange={(e) => {

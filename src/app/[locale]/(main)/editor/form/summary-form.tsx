@@ -6,7 +6,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
 import { EditorFormProps } from "@/lib/types";
 import { summarySchema, SummaryValues } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,6 +13,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { GenerateSummaryButton } from "./generate-summary-button";
 import { useTranslations } from "next-intl";
+import { AutosizeTextarea } from "@/components/ui/auto-size-textarea";
 
 export const SummaryForm = ({ resumeData, setResumeData }: EditorFormProps) => {
   const form = useForm<SummaryValues>({
@@ -58,7 +58,8 @@ export const SummaryForm = ({ resumeData, setResumeData }: EditorFormProps) => {
                   {t("professional-summary")}
                 </FormLabel>
                 <FormControl>
-                  <Textarea
+                  <AutosizeTextarea
+                    minHeight={100}
                     {...field}
                     placeholder={t("a-brief-engaging-text-about-yourself")}
                   />
