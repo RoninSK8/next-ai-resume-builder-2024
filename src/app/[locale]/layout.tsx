@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { Locale, routing } from "@/i18n/routing";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { enUS, ruRU } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,8 +38,14 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  const clerkLocalesMap = new Map([
+    ["ru", ruRU],
+    ["en", enUS],
+  ]);
+  const currentClerkLocale = clerkLocalesMap.get(locale);
+
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={currentClerkLocale}>
       <html lang={locale} suppressHydrationWarning>
         <body className={inter.className}>
           <NextIntlClientProvider messages={messages}>
