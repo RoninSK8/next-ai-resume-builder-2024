@@ -1,4 +1,23 @@
 {
+  "AvailablePlansTable": {
+    "add-single-resume": "Одно резюме",
+    "ai-tools": "ИИ-инструменты",
+    "already-active": "Уже активно",
+    "design-customizations": "Настройка внешнего вида",
+    "free": "Бесплатно",
+    "get-a-premium-subscription-to-unlock-more-features": "Подключите премиум, чтобы открыть дополнительные возможности.",
+    "get-premium": "Перейти на Premium",
+    "get-premium-plus": "Перейти на Premium Plus",
+    "infinite-resumes": "Безлимитные резюме",
+    "premium": "Premium",
+    "premium-plus": "Premium Plus",
+    "up-to-3-resumes": "Три резюме"
+  },
+  "BillingPage": {
+    "billing": "Платежи",
+    "your-current-plan": "Ваш текущий тариф:",
+    "your-subscription-will-be-canceled-on": "Ваша подписка действует до"
+  },
   "BorderStyleButton": {
     "change-border-style": "Выбрать тип рамки"
   },
@@ -55,6 +74,9 @@
     "generate-work-experience": "Автозаполнение опыта работы",
     "smart-fill-ai": "Умное заполнение (ИИ)"
   },
+  "GetPremiumButton": {
+    "get-premium-subscription": "Перейти на Premium"
+  },
   "HomePage": {
     "ai-resume-builder": "ИИ-конструктор резюме",
     "create-the": "Создайте",
@@ -67,6 +89,9 @@
   },
   "LocaleSelector": {
     "select-a-locale": "Выберите язык"
+  },
+  "ManageSubscriptionButton": {
+    "manage-subscription": "Управление подпиской"
   },
   "Metadata": {
     "design-your-resume": "Создайте своё резюме",
@@ -149,5 +174,6 @@
     "work-experience": "Опыт работы",
     "work-experience-header": "Опыт работы"
   },
-  "new-resume": "Новое резюме"
+  "new-resume": "Новое резюме",
+  "up-to-3-resumes": "Три резюме"
 }

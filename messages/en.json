@@ -1,4 +1,23 @@
 {
+  "AvailablePlansTable": {
+    "add-single-resume": "Add single resume",
+    "ai-tools": "AI tools",
+    "already-active": "Already active",
+    "design-customizations": "Design customizations",
+    "free": "Free",
+    "get-a-premium-subscription-to-unlock-more-features": "Get a premium subscription to unlock more features.",
+    "get-premium": "Get Premium",
+    "get-premium-plus": "Get Premium Plus",
+    "infinite-resumes": "infinite resumes",
+    "premium": "Premium",
+    "premium-plus": "Premium Plus",
+    "up-to-3-resumes": "Up to 3 resumes"
+  },
+  "BillingPage": {
+    "billing": "Billing",
+    "your-current-plan": "Your current plan:",
+    "your-subscription-will-be-canceled-on": "Your subscription will be canceled on"
+  },
   "BorderStyleButton": {
     "change-border-style": "Change border style"
   },
@@ -55,6 +74,9 @@
     "generate-work-experience": "Generate work experience",
     "smart-fill-ai": "Smart fill (AI)"
   },
+  "GetPremiumButton": {
+    "get-premium-subscription": "Get Premium subscription"
+  },
   "HomePage": {
     "ai-resume-builder": "AI resume builder",
     "create-the": "Create the",
@@ -67,6 +89,9 @@
   },
   "LocaleSelector": {
     "select-a-locale": "Select a locale"
+  },
+  "ManageSubscriptionButton": {
+    "manage-subscription": "Manage subscription"
   },
   "Metadata": {
     "design-your-resume": "Design your resume",
@@ -149,5 +174,6 @@
     "work-experience": "Work experience",
     "work-experience-header": "Work experience"
   },
-  "new-resume": "New resume"
+  "new-resume": "New resume",
+  "up-to-3-resumes": "Up to 3 resumes"
 }

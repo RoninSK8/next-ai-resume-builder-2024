@@ -7,6 +7,7 @@ import { formatDate } from "date-fns";
 import { ManageSubscriptionButton } from "./manage-subscription-button";
 import { GetSubscriptionButton } from "./get-subscription-button";
 import { AvailablePlansTable } from "@/components/premium/available-plans-table";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Billing",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const { userId } = await auth();
+  const t = await getTranslations("BillingPage");
 
   if (!userId) {
     return null;
@@ -31,11 +33,11 @@ export default async function Page() {
 
   return (
     <main className="mx-auto w-full max-w-7xl space-y-6 px-3 py-6">
-      <h1 className="text-center text-3xl font-bold">Billing</h1>
+      <h1 className="text-center text-3xl font-bold">{t("billing")}</h1>
       <AvailablePlansTable />
       <div className="my-6 border-t" />
       <p>
-        Your current plan:{" "}
+        {t("your-current-plan")}{" "}
         <span className="font-bold">
           {priceInfo ? (priceInfo.product as Stripe.Product).name : "Free"}
         </span>
@@ -44,7 +46,7 @@ export default async function Page() {
         <>
           {subscription.stripeCancelAtPeriodEnd && (
             <p className="text-destructive">
-              Your subscription will be canceled on{" "}
+              {t("your-subscription-will-be-canceled-on")}{" "}
               {formatDate(subscription.stripeCurrentPeriodEnd, "MMMM dd, yyyy")}
             </p>
           )}

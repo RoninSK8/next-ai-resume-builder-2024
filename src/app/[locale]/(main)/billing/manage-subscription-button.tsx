@@ -4,8 +4,10 @@ import { LoadingButton } from "@/components/loading-button";
 import { useToast } from "@/hooks/use-toast";
 import React from "react";
 import { createCustomerPortalSession } from "./actions";
+import { useTranslations } from "next-intl";
 
 export const ManageSubscriptionButton: React.FC = () => {
+  const t = useTranslations("ManageSubscriptionButton");
   const { toast } = useToast();
 
   const [loading, setLoading] = React.useState(false);
@@ -28,7 +30,7 @@ export const ManageSubscriptionButton: React.FC = () => {
 
   return (
     <LoadingButton onClick={handleClick} loading={loading}>
-      Manage subscription
+      {t("manage-subscription")}
     </LoadingButton>
   );
 };
