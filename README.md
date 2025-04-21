@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h2 align="center">
+  <br>
+  Генератор резюме на Next.js 15
+  <br>
+</h2>
 
-## Getting Started
+![Image](https://github.com/user-attachments/assets/a031aa27-0f06-404c-b6d7-efb10131a6ea)
 
-First, run the development server:
+### [Ссылка на проект](https://next-ai-resume-builder-2024.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<h3 align="center"></a>Сервис для умного составления резюме</h3>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Основные технологии:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 15**
+- **TypeScript**
+- **База данных Postgres с Prisma ORM**
+- **Tailwind CSS и компоненты Shadcn UI**
+- **Zustand**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##### Фичи:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Stripe Checkout с различными уровнями подписки и клиентским порталом (влияет на количество доступных резюме и на возможность редактирования внешнего вида)
+- Интернационализация с использованием next-intl
+- Автозаполнение форм с помощью ChatGPT API
+- React Hook Form
+- Динамические формы с useFieldArray
+- Drag and drop форм с помощью dnd-kit
+- Автосохранение текста + debounce
+- Настройка дизайна резюме (возможность выбора цвета и стиля рамок резюме)
+- Загрузка изображений в Vercel Blob
+- Аутентификация через Clerk v6
+- Server actions и обработчики маршрутов API
+- Валидация ввода на фронтенде и бэкенде с использованием схем Zod
+- Адаптивная вёрстка под мобильные устройства
+- Тёмная, светлая тема и системная тема
+- Печать или сохранение в PDF с помощью react-to-print
+- Управление состоянием URL через search params
+- Интеллектуальное кэширование и context providers
+- Деплой на [Vercel](https://vercel.com/)
